@@ -1,19 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Bohater + Ikona -->
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/heroIcon"
+                android:layout_width="48dp" android:layout_height="48dp"
+                android:contentDescription=""
+                android:src="@drawable/ring" />
+
+            <EditText
+                android:id="@+id/heroName"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:layout_marginStart="12dp"
+                android:hint="Imię bohatera (np. Frodo)" />
+        </LinearLayout>
+
+        <!-- Rasa -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Rasa bohatera" android:layout_marginTop="12dp"/>
+        <Spinner
+            android:id="@+id/raceSpinner"
+            android:layout_width="match_parent" android:layout_height="48dp" />
+
+        <!-- Data i godzina -->
+        <TextView
+            android:id="@+id/departureInfo"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Wyruszasz: —" android:layout_marginTop="12dp"/>
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/pickDateBtn"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Wybierz datę" />
+            <Button
+                android:id="@+id/pickTimeBtn"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Wybierz godzinę"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- Opcje specjalne -->
+        <Switch
+            android:id="@+id/elfPathsSwitch"
+            android:layout_width="match_parent" android:layout_height="48dp"
+            android:text="Tajne szlaki elfów" android:layout_marginTop="12dp"/>
+
+        <!-- Wyposażenie -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Wyposażenie" android:layout_marginTop="12dp"/>
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/gearCloak" android:text="Płaszcz elfów"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            <CheckBox
+                android:id="@+id/gearLembas" android:text="Lembasy"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"/>
+            <CheckBox
+                android:id="@+id/gearTorch" android:text="Pochodnia"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"/>
+        </LinearLayout>
+
+        <!-- Priorytet marszu -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Priorytet marszu" android:layout_marginTop="12dp"/>
+        <RadioGroup
+            android:id="@+id/priorityGroup"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/priorityHidden"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Ukryty"/>
+            <RadioButton
+                android:id="@+id/priorityBalanced"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Zbalansowany" android:layout_marginStart="12dp"/>
+            <RadioButton
+                android:id="@+id/priorityHard"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Forsowny" android:layout_marginStart="12dp"/>
+        </RadioGroup>
+
+        <!-- Czas marszu -->
+        <TextView
+            android:id="@+id/walkTimeLabel"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Czas marszu: 0 min" android:layout_marginTop="12dp"/>
+        <SeekBar
+            android:id="@+id/walkTimeSeek"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:max="600"/>
+
+        <!-- Trening kondycyjny (Chronometer) -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Trening kondycyjny" android:layout_marginTop="12dp"/>
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical">
+            <Chronometer
+                android:id="@+id/chronometer"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="00:00"/>
+            <Button
+                android:id="@+id/chronoStart"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Start"/>
+            <Button
+                android:id="@+id/chronoStop"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Stop" android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- Odliczanie do wymarszu -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Odliczanie do wymarszu" android:layout_marginTop="12dp"/>
+        <ProgressBar
+            android:id="@+id/countdownProgress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:max="30" android:progress="0"/>
+        <Button
+            android:id="@+id/startCountdown"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Odliczanie do wymarszu (30 s)" android:layout_marginTop="6dp"/>
+
+        <!-- Morale -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Ocena morale Drużyny" android:layout_marginTop="12dp"/>
+        <RatingBar
+            android:id="@+id/moraleRating"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:numStars="5" android:stepSize="1.0" android:rating="3"/>
+
+        <!-- Podsumowanie -->
+        <Button
+            android:id="@+id/updateSummary"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Pokaż podsumowanie" android:layout_marginTop="16dp"/>
+        <TextView
+            android:id="@+id/summaryText"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+</ScrollView>
